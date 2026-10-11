@@ -20,7 +20,7 @@ def main():
 
         if scelta == "1":
             nuovo_responsabile = input("Inserisci il nuovo responsabile: ")
-            # TODO: Aggiorna responsabile nel sistema
+            deposito.responsabile = nuovo_responsabile
 
         elif scelta == "2":
             while True:
@@ -45,8 +45,9 @@ def main():
 
         elif scelta == "4":
             strumenti_ordinati = deposito.strumenti_ordinati_per_marca()
-            for s in strumenti_ordinati:
-                print(f'- {s}')
+            '''for s in strumenti_ordinati:
+                print(f'- {s}')'''
+            print(strumenti_ordinati) # ho dovuto modificare dato che ho salvato i dati in un'altra maniera
 
         elif scelta == "5":
             id_strumento = input("ID strumento: ")
@@ -72,5 +73,5 @@ def main():
         else:
             print("Opzione non valida!")
 
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+main()
