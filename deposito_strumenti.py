@@ -44,15 +44,21 @@ class DepositoStrumenti:
         newCode = 'S' + str(lastCode+1) #codice nuovo, prendendo il più grande esistente e sommando 1
         dati = [newCode, tipo, marca, anno_acquisto, valore]
         if marca not in strumenti:
-            strumenti[marca] = [dati]
+            self._strumenti[marca] = [dati]
+            self._strumenti = dict(sorted(self._strumenti.items()))
         else:
-            strumenti[marca].append(dati)
+            self._strumenti[marca].append(dati)
+            self._strumenti = dict(sorted(self._strumenti.items()))
         return newCode
 
     def strumenti_ordinati_per_marca(self):
         """Ordina gli strumenti per marca in ordine alfabetico"""
-        for m in self._strumenti: # quando ho salvato i dati, ho già salvato come un dizionario dove ogni chiave è la marca, e ho anche ordinato alfabeticamente
-            print(f"{m}: {self._strumenti[m][0]} - {self._strumenti[m][1]} - {self._strumenti[m][2]} - {self._strumenti[m][3]}")
+        strumenti = self._strumenti
+        for m in strumenti: # quando ho salvato i dati, ho già salvato come un dizionario dove ogni chiave è la marca, e ho anche ordinato alfabeticamente
+            print(f"\n{m}:\n")
+            for i in range(0, len(strumenti[m])):
+                print(f"{strumenti[m][i][0]} - {strumenti[m][i][1]} - {strumenti[m][i][3]} - {strumenti[m][i][4]}") # non stampo esplicitamente la marca
+            print('\n-------------------------------------------------------')
 
 
     def nuovo_prestito(self, data, id_strumento, cognome_allievo):
